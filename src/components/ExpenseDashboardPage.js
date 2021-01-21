@@ -4,8 +4,7 @@ import ExpenseListFilters  from './ExpenseListFilters';
 import ExpensesSummary from './ExpensesSummary';
 
 
-const ExpenseDashboardpage = (props) => {
-    console.log(props);   
+const ExpenseDashboardpage = (props) => {   
     return(
     <div>
     <ExpensesSummary />
