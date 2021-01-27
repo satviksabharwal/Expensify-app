@@ -7,6 +7,7 @@ import "normalize.css/normalize.css";
 import configureStore from "./store/configureStore";
 import { firebase } from "./firebase/firebase";
 import { startSetExpenses } from "./actions/expenses";
+import { login, logout } from "./actions/auth";
 // import './playground/promises';
 
 const store = configureStore();
@@ -20,7 +21,6 @@ const jsx = (
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
-    console.log("app rendered");
     ReactDOM.render(jsx, document.getElementById("root"));
     // hasRendered = true;
   }
@@ -30,6 +30,7 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses()).then(() => {
         renderApp();
       if (history.location.pathname === "/") {
@@ -37,6 +38,7 @@ firebase.auth().onAuthStateChanged((user) => {
       }
     });
   } else {
+    store.dispatch(logout());
     renderApp();
     history.push("/");
   }
