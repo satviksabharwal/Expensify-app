@@ -1,3 +1,7 @@
+import "react-app-polyfill/ie9";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
+import "./polyfills";
 import React from "react";
 import ReactDOM from "react-dom";
 import AppRouter, { history } from "./routers/AppRouter";
@@ -8,7 +12,7 @@ import configureStore from "./store/configureStore";
 import { firebase } from "./firebase/firebase";
 import { startSetExpenses } from "./actions/expenses";
 import { login, logout } from "./actions/auth";
-// import './playground/promises';
+import LoadingPage from "./components/LoadingPage";
 
 const store = configureStore();
 
@@ -26,13 +30,13 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
+ReactDOM.render(<LoadingPage />, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses()).then(() => {
-        renderApp();
+      renderApp();
       if (history.location.pathname === "/") {
         history.push("/dashboard");
       }

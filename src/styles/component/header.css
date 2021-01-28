@@ -1,0 +1,14 @@
+.header {
+  background: #364051; /*dark-blue*/
+}
+.header__content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+.header__title {
+  color: white;
+  text-decoration: none;
+  margin: 0;
+}

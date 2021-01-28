@@ -1,0 +1,20 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.input-group__item {
+  margin-bottom: 8px;
+}
+
+@media (min-width: 45rem) {
+  .input-group {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+  }
+  .input-group__item {
+    margin: 0 8px 0 0;
+  }
+}

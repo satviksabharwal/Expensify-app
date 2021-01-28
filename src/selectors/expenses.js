@@ -1,14 +1,16 @@
-import moment from 'moment';
+import moment from "moment";
 
 //Get visible expenses
 export default (expense, { text, sortBy, startDate, endDate }) => {
   return expense
     .filter((expenses) => {
       const createdAtMoment = moment(expenses.createdAt);
-      const startDateMatch =
-        startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') :  true;
-      const endDateMatch =
-        endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
+      const startDateMatch = startDate
+        ? startDate.isSameOrBefore(createdAtMoment, "day")
+        : true;
+      const endDateMatch = endDate
+        ? endDate.isSameOrAfter(createdAtMoment, "day")
+        : true;
       const textMatch = expenses.description
         .toLowerCase()
         .includes(text.toLowerCase());

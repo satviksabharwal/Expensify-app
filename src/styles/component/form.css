@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__error {
+  margin: 0 0 12px 0;
+  font-style: italic;
+}
+
+.text-input,
+.textarea {
+  border: 1px solid #cacccd;
+  height: 48px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 300;
+  padding: 12px;
+}
+
+.textarea {
+  height: 10rem;
+  margin-top: 10px;
+}
